@@ -1,5 +1,4 @@
 # SneakerShop
-# JCRPO project
 SneakerShop is a web application for buying and selling sneakers. <br>
 
 # Contents
