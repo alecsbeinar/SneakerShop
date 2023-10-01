@@ -36,15 +36,15 @@
 
 #### 2.2. Интерфейс пользователя <a name="2.2"></a>
 
-- Окно просмотра всех продуктов (Главная страница)
+- Окно просмотра всех продуктов (Главная страница) <br>
   ![Окно просмотра всех продуктов](https://raw.githubusercontent.com/alecsbeinar/SneakerShop/master/Documentation/Mockups/index.png)
-- Окно просмотра детальной информации о продукте
+- Окно просмотра детальной информации о продукте <br>
   ![Окно просмотра детальной информации о продукте](https://raw.githubusercontent.com/alecsbeinar/SneakerShop/master/Documentation/Mockups/Product_card.png)
-- Окно получения заказа
+- Окно получения заказа <br>
   ![Окно получения заказа](https://raw.githubusercontent.com/alecsbeinar/SneakerShop/master/Documentation/Mockups/Cart.png)
-- Окно регистрации
+- Окно регистрации <br>
   ![Окно регистрации](https://raw.githubusercontent.com/alecsbeinar/SneakerShop/master/Documentation/Mockups/SignUp.png)
-- Окно входа в систему
+- Окно входа в систему <br>
   ![Окно входа в систему](https://raw.githubusercontent.com/alecsbeinar/SneakerShop/master/Documentation/Mockups/LogIn.png)
 
 #### 2.3. Характеристики пользователей <a name="2.3"></a>
