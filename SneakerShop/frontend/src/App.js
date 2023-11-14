@@ -1,4 +1,4 @@
-import React, {Fragment, useState} from "react";
+import React, {Fragment, useState, useEffect} from "react";
 import CssBaseline from "@mui/material/CssBaseline";
 // import {
 //     Accordion,
@@ -11,28 +11,36 @@ import CssBaseline from "@mui/material/CssBaseline";
 // } from "@mui/material";
 import Footer from "./components/Footer";
 import Header from './components/Header';
-
-
-class ConnectionExample extends React.Component {
-    componentDidMount() {
-        const apiUrl = 'http://127.0.0.1:8000/api/';
-        fetch(apiUrl)
-            .then((response) => response.json())
-            .then((data) => console.log(data));
-    }
-    render() {
-        return <div>Example connection</div>;
-    }
-}
+import Products from './components/Products'
+import ProductLoadingComponent from './components/ProductLoading'
 
 
 export function App() {
     // const [isAlertVisible, setISAlertVisible] = useState(false)
+
+    const ProductLoading = ProductLoadingComponent(Products)
+    const [appState, setAppState] = useState({
+        loading: false,
+        products: null,
+    });
+    useEffect(() => {
+        setAppState({loading: true});
+        const apiUrl = 'http://127.0.0.1:8000/api/';
+        fetch(apiUrl)
+            .then((data) => data.json())
+            .then((products) => {
+                setAppState({loading: false, products: products});
+            });
+    }, [setAppState]);
+
     return (
         <Fragment>
             <CssBaseline/>
             <Header/>
-            <ConnectionExample/>
+            <div className={"App"}>
+                <h1>Products</h1>
+                <ProductLoading isLoading={appState.loading} products={appState.products}/>
+            </div>
             {/*<Container maxWidth="lg">*/}
             {/*    <Accordion sx={{m: "20px 0"}}>*/}
             {/*        <AccordionSummary>dfgfdh</AccordionSummary>*/}
