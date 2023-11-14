@@ -12,13 +12,27 @@ import CssBaseline from "@mui/material/CssBaseline";
 import Footer from "./components/Footer";
 import Header from './components/Header';
 
+
+class ConnectionExample extends React.Component {
+    componentDidMount() {
+        const apiUrl = 'http://127.0.0.1:8000/api/';
+        fetch(apiUrl)
+            .then((response) => response.json())
+            .then((data) => console.log(data));
+    }
+    render() {
+        return <div>Example connection</div>;
+    }
+}
+
+
 export function App() {
     // const [isAlertVisible, setISAlertVisible] = useState(false)
-
     return (
         <Fragment>
             <CssBaseline/>
             <Header/>
+            <ConnectionExample/>
             {/*<Container maxWidth="lg">*/}
             {/*    <Accordion sx={{m: "20px 0"}}>*/}
             {/*        <AccordionSummary>dfgfdh</AccordionSummary>*/}
