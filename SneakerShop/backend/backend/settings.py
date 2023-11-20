@@ -43,6 +43,7 @@ INSTALLED_APPS = [
 
     'shop.apps.ShopConfig',
     'shop_api.apps.ShopApiConfig',
+    'users.apps.UsersConfig',
 ]
 
 MIDDLEWARE = [
@@ -142,3 +143,6 @@ REST_FRAMEWORK = {
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
 ]
+
+# Custom user model
+AUTH_USER_MODEL = "users.MyUser"
