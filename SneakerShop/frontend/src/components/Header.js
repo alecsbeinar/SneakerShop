@@ -1,6 +1,8 @@
 import * as React from 'react';
 import {makeStyles} from '@mui/styles';
-import { AppBar, Box, Typography, Container } from '@mui/material';
+import {AppBar, Box, Typography, Container, Link, Toolbar} from '@mui/material';
+import Button from "@mui/material/Button";
+import {NavLink} from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
     footer: {
@@ -13,6 +15,15 @@ const useStyles = makeStyles((theme) => ({
             paddingBottom: theme.spacing(6),
         },
     },
+    appBar: {
+		borderBottom: `1px solid ${theme.palette.divider}`,
+	},
+	link: {
+		margin: theme.spacing(1, 1.5),
+	},
+	toolbarTitle: {
+		flexGrow: 1,
+	},
 }))
 
 function Header() {
@@ -20,19 +31,60 @@ function Header() {
     return (
         <React.Fragment>
             <AppBar
-                position="static"
-                sx={{color: "white"}}
-                elevation={0}
-                className={classes.appBar}
-            >
-                <Container maxWidth="lg">
-                    <Box sx={{p: "20px 0"}}>
-                        <Typography variant="h6" noWrap>
-                            SneakerShop
-                        </Typography>
-                    </Box>
-                </Container>
-            </AppBar>
+				position="static"
+				color="default"
+				elevation={0}
+				className={classes.appBar}
+			>
+				<Toolbar className={classes.toolbar}>
+					<Typography
+						variant="h6"
+						color="inherit"
+						noWrap
+						className={classes.toolbarTitle}
+					>
+						<Link
+							component={NavLink}
+							to="/"
+							underline="none"
+							color="textPrimary"
+						>
+							SneakerShop
+						</Link>
+					</Typography>
+					<nav>
+						<Link
+							color="textPrimary"
+							href="#"
+							className={classes.link}
+							component={NavLink}
+							to="/register"
+						>
+							Register
+						</Link>
+					</nav>
+					<Button
+						href="#"
+						color="primary"
+						variant="outlined"
+						className={classes.link}
+						component={NavLink}
+						to="/login"
+					>
+						Login
+					</Button>
+					<Button
+						href="#"
+						color="primary"
+						variant="outlined"
+						className={classes.link}
+						component={NavLink}
+						to="/logout"
+					>
+						Logout
+					</Button>
+				</Toolbar>
+			</AppBar>
         </React.Fragment>
     );
 }
