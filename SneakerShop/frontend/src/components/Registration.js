@@ -68,7 +68,6 @@ function SignUp() {
 				password: formData.password,
 			})
 			.then((res) => {
-				// TODO: handle errors
 				navigate('/login');
 				console.log(res);
 				console.log(res.data);
