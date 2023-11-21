@@ -4,6 +4,7 @@ import {App} from './App';
 import SignUp from './components/Registration';
 import SignIn from "./components/Login";
 import Logout from "./components/Logout";
+import Product from './components/SingleProduct';
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
 import {ThemeProvider} from "@mui/material"
 import {theme} from "./styles/theme"
@@ -18,6 +19,7 @@ root.render(
                     <Route path={"/register"} element={<SignUp/>}/>
                     <Route path={"/login"} element={<SignIn/>}/>
                     <Route path={"/logout"} element={<Logout/>}/>
+                    <Route path={"/product/:slug"} element={<Product/>}/>
                 </Routes>
             </BrowserRouter>
         </ThemeProvider>

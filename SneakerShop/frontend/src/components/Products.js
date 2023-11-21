@@ -6,7 +6,8 @@ import {
     CardMedia,
     Grid,
     Typography,
-    Container
+    Container,
+    Link
 } from "@mui/material";
 
 const useStyles = makeStyles((theme) => ({
@@ -49,12 +50,18 @@ const Products = (props) => {
                         return (
                             <Grid item key={product.id} xs={12} md={4}>
                                 <Card className={classes.card}>
-                                    <CardMedia
-                                        className={classes.cardMedia}
-                                        style={{height: 0, paddingTop: '56.25%'}}
-                                        image={"https://source.unsplash.com/random"}
-                                        title={"Image title"}
-                                    />
+                                    <Link
+                                        color="textPrimary"
+                                        href={'product/' + product.slug}
+                                        className={classes.link}
+                                    >
+                                        <CardMedia
+                                            className={classes.cardMedia}
+                                            style={{height: 0, paddingTop: '56.25%'}}
+                                            image={"https://source.unsplash.com/random"}
+                                            title={"Image title"}
+                                        />
+                                    </Link>
                                     <CardContent className={classes.cardContent}>
                                         <Typography
                                             gutterBottom
