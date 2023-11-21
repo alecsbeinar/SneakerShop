@@ -31,6 +31,6 @@ class ProductModelViewSet(viewsets.ModelViewSet):
 
     def get_object(self, queryset=None, **kwargs):
         item = self.kwargs.get('pk')
-        obj = get_object_or_404(Product, name=item)
+        obj = get_object_or_404(Product, slug=item)
         self.check_object_permissions(self.request, obj)
         return obj

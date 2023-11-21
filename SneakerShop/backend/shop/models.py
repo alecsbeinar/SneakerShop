@@ -23,6 +23,7 @@ class Product(models.Model):
     description = models.TextField(null=True)
     price = models.DecimalField(max_digits=7, decimal_places=2, null=True)
     quantity = models.IntegerField()
+    slug = models.SlugField(max_length=250, unique=True, null=True, default=None)
 
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
