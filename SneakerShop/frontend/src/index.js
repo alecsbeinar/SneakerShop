@@ -15,6 +15,7 @@ import Search from "./components/products/Search";
 import Admin from "./components/Admin";
 import Create from "./components/admin/create";
 import Edit from "./components/admin/edit";
+import Delete from "./components/admin/delete";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -34,6 +35,7 @@ root.render(
                         <Route path="/admin" element={<Admin/>}/>
                         <Route path="/admin/create" element={<Create/>}/>
                         <Route path="/admin/edit/:id" element={<Edit/>}/>
+                        <Route path="/admin/delete/:id" element={<Delete/>}/>
                     </Routes>
                     <Footer/>
                 </React.StrictMode>
