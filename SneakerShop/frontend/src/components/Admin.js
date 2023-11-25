@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import '../App.css';
 import Products from '../components/admin/products';
 import ProductLoadingComponent from '../components/products/ProductLoading';
 import axiosInstance from '../Axios';
