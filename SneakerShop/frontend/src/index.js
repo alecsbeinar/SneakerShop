@@ -1,5 +1,6 @@
 import React, {Fragment} from 'react';
 import ReactDOM from 'react-dom/client';
+import './index.css';
 import {App} from './App';
 import Header from "./components/Header";
 import Footer from "./components/Footer";
@@ -12,25 +13,28 @@ import {ThemeProvider} from "@mui/material"
 import {theme} from "./styles/theme"
 import Search from "./components/products/Search";
 import Admin from "./components/Admin";
+import Create from "./components/admin/create";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     <Fragment>
         <ThemeProvider theme={theme}>
             <BrowserRouter>
-                <Header/>
-                <Routes>
-                    <Route path="/" element={<App/>}/>
-                    <Route path={"/register"} element={<SignUp/>}/>
-                    <Route path={"/login"} element={<SignIn/>}/>
-                    <Route path={"/logout"} element={<Logout/>}/>
-                    <Route path={"/product/:slug"} element={<Product/>}/>
-                    <Route path="/search" element={<Search/>}/>
+                <React.StrictMode>
+                    <Header/>
+                    <Routes>
+                        <Route path="/" element={<App/>}/>
+                        <Route path={"/register"} element={<SignUp/>}/>
+                        <Route path={"/login"} element={<SignIn/>}/>
+                        <Route path={"/logout"} element={<Logout/>}/>
+                        <Route path={"/product/:slug"} element={<Product/>}/>
+                        <Route path="/search" element={<Search/>}/>
 
-                    <Route path="/admin" element={<Admin/>}/>
-
-                </Routes>
-                <Footer/>
+                        <Route path="/admin" element={<Admin/>}/>
+                        <Route path="/admin/create" element={<Create/>}/>
+                    </Routes>
+                    <Footer/>
+                </React.StrictMode>
             </BrowserRouter>
         </ThemeProvider>
     </Fragment>
