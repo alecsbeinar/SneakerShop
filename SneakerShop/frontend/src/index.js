@@ -18,6 +18,7 @@ root.render(
     <Fragment>
         <ThemeProvider theme={theme}>
             <BrowserRouter>
+                <Header/>
                 <Routes>
                     <Route path="/" element={<App/>}/>
                     <Route path={"/register"} element={<SignUp/>}/>
@@ -29,6 +30,7 @@ root.render(
                     <Route path="/admin" element={<Admin/>}/>
 
                 </Routes>
+                <Footer/>
             </BrowserRouter>
         </ThemeProvider>
     </Fragment>

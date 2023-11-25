@@ -33,7 +33,6 @@ export default function Product() {
 
     return (
         <Fragment>
-            <Header/>
             <Container component="main" maxWidth="md">
                 <CssBaseline/>
                 <div className={classes.paper}></div>
@@ -59,7 +58,6 @@ export default function Product() {
                     </Container>
                 </div>
             </Container>
-            <Footer/>
         </Fragment>
     );
 }

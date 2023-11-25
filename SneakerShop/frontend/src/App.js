@@ -36,7 +36,6 @@ export function App() {
     return (
         <Fragment>
             <CssBaseline/>
-            <Header/>
             <div className={"App"}>
                 <h1>Products</h1>
                 <ProductLoading isLoading={appState.loading} products={appState.products}/>
@@ -51,7 +50,6 @@ export function App() {
 
             {/*{isAlertVisible && <Alert sx={{position: "fixed", bottom: "20px", left: "20px", width: "calc(100% - 40px)"}}*/}
             {/*                          color={"error"}>Close this site</Alert>}*/}
-            <Footer/>
         </Fragment>
     );
 }
