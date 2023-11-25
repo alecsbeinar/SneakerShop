@@ -1,27 +1,24 @@
 import * as React from 'react';
 import {makeStyles} from '@mui/styles';
-import {AppBar, Box, Typography, Container, Link, Toolbar} from '@mui/material';
-import Button from "@mui/material/Button";
+import {
+    AppBar,
+    Typography,
+    Link,
+    Toolbar,
+    CssBaseline,
+    Button,
+} from '@mui/material';
 import {NavLink, useNavigate} from "react-router-dom";
 import {useState} from "react";
 import SearchBar from "material-ui-search-bar";
 
 const useStyles = makeStyles((theme) => ({
-    footer: {
-        borderTop: `1px solid ${theme.palette.divider}`,
-        marginTop: theme.spacing(8),
-        paddingTop: theme.spacing(3),
-        paddingBottom: theme.spacing(3),
-        [theme.breakpoints.up('sm')]: {
-            paddingTop: theme.spacing(6),
-            paddingBottom: theme.spacing(6),
-        },
-    },
     appBar: {
         borderBottom: `1px solid ${theme.palette.divider}`,
     },
     link: {
-        margin: theme.spacing(1, 1.5),
+        my: 1,
+        mx: 1.5,
     },
     toolbarTitle: {
         flexGrow: 1,
@@ -42,17 +39,19 @@ function Header() {
 
     return (
         <React.Fragment>
+            <CssBaseline/>
             <AppBar
                 position="static"
                 color="default"
                 elevation={0}
                 className={classes.appBar}
             >
-                <Toolbar className={classes.toolbar}>
+                <Toolbar sx={{flexWrap: 'wrap'}} className={classes.toolbar}>
                     <Typography
                         variant="h6"
                         color="inherit"
                         noWrap
+                        sx={{flexGrow: 1}}
                         className={classes.toolbarTitle}
                     >
                         <Link
@@ -73,9 +72,11 @@ function Header() {
 
                     <nav>
                         <Link
-                            color="textPrimary"
+                            variant="button"
+                            color="text.primary"
                             href="#"
                             className={classes.link}
+                            sx={{ my: 1, mx: 1.5 }}
                             component={NavLink}
                             to="/register"
                         >
@@ -87,6 +88,7 @@ function Header() {
                         color="primary"
                         variant="outlined"
                         className={classes.link}
+                        sx={{ my: 1, mx: 1.5 }}
                         component={NavLink}
                         to="/login"
                     >
@@ -97,6 +99,7 @@ function Header() {
                         color="primary"
                         variant="outlined"
                         className={classes.link}
+                        sx={{ my: 1, mx: 1.5 }}
                         component={NavLink}
                         to="/logout"
                     >
