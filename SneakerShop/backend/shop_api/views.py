@@ -52,3 +52,27 @@ class ProductSearch(generics.ListAPIView):
     queryset = Product.objects.all()
     filter_backends = [filters.SearchFilter]
     search_fields = ['^name']
+
+
+class CreateProduct(generics.CreateAPIView):
+    permission_classes = [permissions.IsAuthenticated]
+    serializer_class = ProductSerializer
+    queryset = Product.objects.all()
+
+
+class AdminProductDetail(generics.RetrieveAPIView):
+    permission_classes = [permissions.IsAuthenticated]
+    serializer_class = ProductSerializer
+    queryset = Product.objects.all()
+
+
+class EditProduct(generics.UpdateAPIView):
+    permission_classes = [permissions.IsAuthenticated]
+    serializer_class = ProductSerializer
+    queryset = Product.objects.all()
+
+
+class DeleteProduct(generics.RetrieveDestroyAPIView):
+    permission_classes = [permissions.IsAuthenticated]
+    serializer_class = ProductSerializer
+    queryset = Product.objects.all()
