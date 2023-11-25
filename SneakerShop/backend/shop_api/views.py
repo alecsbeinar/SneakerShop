@@ -1,3 +1,4 @@
+from django.views.decorators.csrf import csrf_exempt
 from rest_framework import generics, permissions
 from rest_framework import viewsets
 from rest_framework.decorators import permission_classes, action
@@ -8,7 +9,10 @@ from rest_framework.response import Response
 from shop.models import Product
 from .serializers import ProductSerializer
 from rest_framework.decorators import authentication_classes, permission_classes
-
+from rest_framework.views import APIView
+from rest_framework import status
+from rest_framework.parsers import MultiPartParser, FormParser
+from rest_framework.request import Request
 
 
 class UserPermission(permissions.BasePermission):
@@ -54,10 +58,24 @@ class ProductSearch(generics.ListAPIView):
     search_fields = ['^name']
 
 
-class CreateProduct(generics.CreateAPIView):
+# class CreateProduct(generics.CreateAPIView):
+#     permission_classes = [permissions.IsAuthenticated]
+#     serializer_class = ProductSerializer
+#     queryset = Product.objects.all()
+
+class CreateProduct(APIView):
     permission_classes = [permissions.IsAuthenticated]
-    serializer_class = ProductSerializer
-    queryset = Product.objects.all()
+    parser_classes = [MultiPartParser, FormParser]
+
+    @csrf_exempt
+    def post(self, request: Request, format=None):
+        print(request.data)
+        serializer = ProductSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        else:
+            return Response(serializer.data, status=status.HTTP_400_BAD_REQUEST)
 
 
 class AdminProductDetail(generics.RetrieveAPIView):

@@ -2,6 +2,10 @@ from django.core.validators import MinLengthValidator
 from django.db import models
 
 
+def upload_to(instance, filename):
+    return f'products/{filename}'
+
+
 class Category(models.Model):
     name = models.CharField(max_length=100)
 
@@ -19,6 +23,7 @@ class Product(models.Model):
         max_length=250,
         validators=[MinLengthValidator(2, "Title must be greater than 2 characters")]
     )
+    image = models.ImageField("Image", upload_to=upload_to, default='products/default.jpg')
     category = models.ForeignKey(Category, on_delete=models.PROTECT, default=1)
     description = models.TextField(null=True)
     price = models.DecimalField(max_digits=7, decimal_places=2, null=True)
