@@ -11,8 +11,8 @@ import CssBaseline from "@mui/material/CssBaseline";
 // } from "@mui/material";
 import Footer from "./components/Footer";
 import Header from './components/Header';
-import Products from './components/Products'
-import ProductLoadingComponent from './components/ProductLoading'
+import Products from './components/products/Products'
+import ProductLoadingComponent from './components/products/ProductLoading'
 
 
 export function App() {

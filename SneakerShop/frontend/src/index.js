@@ -1,14 +1,14 @@
 import React, {Fragment} from 'react';
 import ReactDOM from 'react-dom/client';
 import {App} from './App';
-import SignUp from './components/Registration';
-import SignIn from "./components/Login";
-import Logout from "./components/Logout";
-import Product from './components/SingleProduct';
+import SignUp from './components/auth/Registration';
+import SignIn from "./components/auth/Login";
+import Logout from "./components/auth/Logout";
+import Product from './components/products/SingleProduct';
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
 import {ThemeProvider} from "@mui/material"
 import {theme} from "./styles/theme"
-import Search from "./components/Search";
+import Search from "./components/products/Search";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

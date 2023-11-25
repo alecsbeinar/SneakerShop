@@ -1,13 +1,13 @@
 import React, {useState, useEffect, Fragment} from 'react';
-import axiosInstance from '../Axios';
+import axiosInstance from '../../Axios';
 import {useParams} from 'react-router-dom';
 //MaterialUI
 import CssBaseline from '@mui/material/CssBaseline';
 import {makeStyles} from "@mui/styles";
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
-import Header from "./Header";
-import Footer from "./Footer";
+import Header from "../Header";
+import Footer from "../Footer";
 
 const useStyles = makeStyles((theme) => ({
     paper: {

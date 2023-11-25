@@ -1,5 +1,5 @@
 import * as React from 'react';
-import axiosInstance from '../Axios';
+import axiosInstance from '../../Axios';
 import {useNavigate} from 'react-router-dom';
 
 // MaterialUI

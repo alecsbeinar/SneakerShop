@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import axiosInstance from '../Axios';
+import axiosInstance from '../../Axios';
 
 import {makeStyles} from "@mui/styles";
 import {
@@ -11,8 +11,8 @@ import {
     Container,
     Link
 } from '@mui/material';
-import Header from "./Header";
-import Footer from "./Footer";
+import Header from "../Header";
+import Footer from "../Footer";
 
 const useStyles = makeStyles((theme) => ({
     cardMedia: {
