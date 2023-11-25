@@ -58,7 +58,7 @@ const Products = (props) => {
                                         <CardMedia
                                             className={classes.cardMedia}
                                             style={{height: 0, paddingTop: '56.25%'}}
-                                            image={"https://source.unsplash.com/random"}
+                                            image={product.image}
                                             title={"Image title"}
                                         />
                                     </Link>
@@ -69,7 +69,7 @@ const Products = (props) => {
                                             component={"h2"}
                                             className={"classes.productTitle"}
                                         >
-                                            {product.name.substr(0, 50)}...
+                                            {product.name.substr(0, 50)}
                                         </Typography>
                                         <div className={classes.productText}>
                                             <Typography

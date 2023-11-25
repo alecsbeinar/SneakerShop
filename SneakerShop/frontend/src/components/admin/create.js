@@ -62,19 +62,26 @@ export default function Create() {
         quantity: '',
     });
 
-    const [formData, updateFormData] = useState(initialFormData);
+    const [productData, updateFormData] = useState(initialFormData);
+    const [productImage, setProductImage] = useState(null);
 
     const handleChange = (e) => {
+        if ([e.target.name] == 'image') {
+			setProductImage({
+				image: e.target.files,
+			});
+			console.log(e.target.files);
+		}
         if ([e.target.name] == 'name') {
             updateFormData({
-                ...formData,
+                ...productData,
                 // Trimming any whitespace
                 [e.target.name]: e.target.value.trim(),
                 ['slug']: slugify(e.target.value.trim()),
             });
         } else {
             updateFormData({
-                ...formData,
+                ...productData,
                 // Trimming any whitespace
                 [e.target.name]: e.target.value.trim(),
             });
@@ -83,15 +90,16 @@ export default function Create() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        axiosInstance
-            .post(`admin/create/`, {
-                name: formData.name,
-                slug: formData.slug,
-                description: formData.description,
-                price: formData.price,
-                quantity: formData.quantity,
-                category: 1,
-            })
+        let formData = new FormData();
+		formData.append('name', productData.name);
+		formData.append('slug', productData.slug);
+		formData.append('category', 1);
+		formData.append('description', productData.description);
+		formData.append('price', productData.price);
+		formData.append('quantity', productData.quantity);
+		formData.append('image', productImage.image[0]);
+		axiosInstance
+            .post(`admin/create/`, formData)
             .then((res) => {
                 navigate('/admin/');
             });
@@ -146,7 +154,7 @@ export default function Create() {
                                 label="slug"
                                 name="slug"
                                 autoComplete="slug"
-                                value={formData.slug}
+                                value={productData.slug}
                                 onChange={handleChange}
                             />
                         </Grid>
@@ -174,6 +182,14 @@ export default function Create() {
                                 onChange={handleChange}
                             />
                         </Grid>
+                        <input
+                            accept="image/*"
+                            className={classes.input}
+                            id="product-image"
+                            onChange={handleChange}
+                            name="image"
+                            type="file"
+                        />
                     </Grid>
                     <Container style={{marginTop: "17.5px"}}>
                         <Button
