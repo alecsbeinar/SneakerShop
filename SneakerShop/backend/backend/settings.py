@@ -143,10 +143,25 @@ REST_FRAMEWORK = {
 }
 
 AUTHENTICATION_BACKENDS = (
-   'drf_social_oauth2.backends.DjangoOAuth2',
-   'django.contrib.auth.backends.ModelBackend',
+    # Facebook OAuth2
+    'social_core.backends.facebook.FacebookAppOAuth2',
+    'social_core.backends.facebook.FacebookOAuth2',
+
+    'drf_social_oauth2.backends.DjangoOAuth2',
+    'django.contrib.auth.backends.ModelBackend',
 )
 
+# Facebook configuration
+SOCIAL_AUTH_FACEBOOK_KEY = '693303766092114'
+SOCIAL_AUTH_FACEBOOK_SECRET = 'c2b6932c1c11f69f99a47f91503eebcd'
+SOCIAL_AUTH_LOGIN_REDIRECT_URL = 'http://localhost:3000/'
+# Define SOCIAL_AUTH_FACEBOOK_SCOPE to get extra permissions from Facebook.
+# Email is not sent by default, to get it, you must request the email permission.
+SOCIAL_AUTH_FACEBOOK_SCOPE = ['email']
+SOCIAL_AUTH_FACEBOOK_PROFILE_EXTRA_PARAMS = {
+    'fields': 'id, name, email'
+}
+SOCIAL_AUTH_USER_FIELDS = ['email', 'username', 'first_name', 'password']
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
