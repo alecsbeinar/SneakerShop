@@ -6,14 +6,13 @@ const axiosInstance = axios.create({
     baseURL: baseURL,
     timeout: 5000,
     headers: {
-        Authorization: localStorage.getItem('access_token')
-            ? 'JWT ' + localStorage.getItem('access_token')
-            : null,
+        Authorization: 'Bearer ' + localStorage.getItem('access_token'),
         'Content-Type': 'multipart/form-data',
         accept: 'application/json',
     },
 })
 
+// TODO: catch exceptions with auth
 axiosInstance.interceptors.response.use(
     (response) => {
         return response;
