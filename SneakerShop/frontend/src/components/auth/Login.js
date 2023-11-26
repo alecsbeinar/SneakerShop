@@ -1,6 +1,9 @@
 import * as React from 'react';
 import axiosInstance from '../../axios/login';
 import {useNavigate} from 'react-router-dom';
+import FbLogin from 'react-facebook-login';
+import FacebookLogin from '../../axios/facebookLogin';
+
 
 // MaterialUI
 import Avatar from '@mui/material/Avatar';
@@ -66,8 +69,8 @@ function SignIn() {
                 username: formData.email,
                 password: formData.password,
                 client_id: 'VAfL1wKZ3WVdfJzrzdmLaYGiqBanzsTVkG9NhaFn',
-				client_secret:
-					'EiT080xhH4hY8rg9yHfFXqcDRmTLqjizkAa2YYvZAq3CRrbrTYf0XbYC6vWHRcHE3cROBGvA2b2DyQ2htzWKJRykbmk68uZWYnNws1dmPq2aKcwJI4Mq3uRZt2hPILLZ',
+                client_secret:
+                    'EiT080xhH4hY8rg9yHfFXqcDRmTLqjizkAa2YYvZAq3CRrbrTYf0XbYC6vWHRcHE3cROBGvA2b2DyQ2htzWKJRykbmk68uZWYnNws1dmPq2aKcwJI4Mq3uRZt2hPILLZ',
             })
             .then((res) => {
                 localStorage.setItem('access_token', res.data.access_token);
@@ -76,6 +79,12 @@ function SignIn() {
                 console.log(res);
                 console.log(res.data);
             });
+    };
+
+    const responseFacebook = async (response) => {
+        console.log(response);
+        FacebookLogin(response.accessToken);
+        navigate('/');
     };
 
     const classes = useStyles();
@@ -127,6 +136,15 @@ function SignIn() {
                     >
                         Sign In
                     </Button>
+
+                    <Container style={{marginTop: "17.5px", paddingLeft: "0", paddingBottom: "10px"}}>
+                        <FbLogin
+                            appId="693303766092114"
+                            fields="name,email,picture"
+                            callback={responseFacebook}
+                        />
+                    </Container>
+
                     <Grid container>
                         <Grid item xs>
                             <Link href="#" variant="body2">
