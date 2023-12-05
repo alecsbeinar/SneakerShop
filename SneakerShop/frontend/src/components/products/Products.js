@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import {makeStyles} from "@mui/styles";
 import {
     Card,
@@ -9,6 +9,7 @@ import {
     Container,
     Link
 } from "@mui/material";
+import SelectSort from "./SelectSort";
 
 const useStyles = makeStyles((theme) => ({
     CardMedia: {
@@ -39,11 +40,32 @@ const useStyles = makeStyles((theme) => ({
 
 
 const Products = (props) => {
-    const {products} = props;
+    const [{products}, setProducts] = useState(props);
+    const [selectedSort, setSelectedSort] = useState("")
+
+    // TODO: вынести сортировку на бэк для пагинации
+    const sortProducts = (sort) => {
+        setSelectedSort(sort);
+        products.sort((a, b) => a[sort].localeCompare(b[sort]));
+        setProducts({products});
+    }
+
+
     const classes = useStyles();
     if (!products || products.length === 0) return <p>Can not find any products...</p>;
     return (
         <React.Fragment>
+            <Container style={{paddingBottom: 40}}>
+                <SelectSort
+                    value={selectedSort}
+                    onChange={sortProducts}
+                    defaultValue="Сортировка"
+                    options={[
+                        {value: 'name', name: "По названию"},
+                        {value: 'price', name: "По цене"},
+                    ]}
+                />
+            </Container>
             <Container maxWidth={"md"} component={"main"}>
                 <Grid container spacing={5} alignItems={"flex-end"}>
                     {products.map((product) => {
