@@ -1,12 +1,13 @@
 import React from "react";
+import Loader from "../UI/Loader/Loader";
 
 function ProductLoading(Component) {
     return function ProductLoadingComponent({isLoading, ...props}) {
         if (!isLoading) return <Component {...props}/>;
         return (
-            <p style={{fontSize: '25px'}}>
-                We are waiting for the data to load!...
-            </p>
+            <div style={{display: 'flex', justifyContent: 'center', marginTop: 50}}>
+                <Loader/>
+            </div>
         )
     }
 }
