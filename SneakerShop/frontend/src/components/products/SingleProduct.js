@@ -8,6 +8,7 @@ import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 import Header from "../Header";
 import Footer from "../Footer";
+import MyModal from "../UI/MyModal/MyModal";
 
 const useStyles = makeStyles((theme) => ({
     paper: {
@@ -23,6 +24,7 @@ export default function Product() {
     const classes = useStyles();
 
     const [data, setData] = useState({products: []});
+    const [modal, setModal] = useState(false);
 
     useEffect(() => {
         axiosInstance.get(slug).then((res) => {
@@ -35,6 +37,17 @@ export default function Product() {
         <Fragment>
             <Container component="main" maxWidth="md">
                 <CssBaseline/>
+
+                <button onClick={() => setModal(true)}>
+                    Написать отзыв
+                </button>
+
+                <MyModal visible={modal} setVisible={setModal}>
+                    <button onClick={() => setModal(false)}>
+                        Отправить
+                    </button>
+                </MyModal>
+
                 <div className={classes.paper}></div>
                 <div className={classes.heroContent}>
                     <Container maxWidth="sm">
